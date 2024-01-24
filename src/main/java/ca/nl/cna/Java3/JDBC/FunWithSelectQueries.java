@@ -17,8 +17,7 @@ public class FunWithSelectQueries {
 
     public static void main(String[] args) {
         // Open a connection
-        try(Connection conn = DriverManager.getConnection(
-                DBProperties.JAVA_TEST_DB_URL, DBProperties.USER, DBProperties.PASS);
+        try(Connection conn = DriverManager.getConnection(DBProperties.JAVA_TEST_DB_URL);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(QUERY);
         ) {
