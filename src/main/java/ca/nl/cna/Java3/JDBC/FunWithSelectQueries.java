@@ -16,10 +16,18 @@ public class FunWithSelectQueries {
     static final String QUERY = "SELECT id, first, last, age FROM Employees";
 
     public static void main(String[] args) {
-        // Open a connection
-        try(Connection conn = DriverManager.getConnection(DBProperties.JAVA_TEST_DB_URL);
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(QUERY);
+        System.out.println("Fun with Select Queries");
+        selectAllEmployees();
+    }
+
+    /**
+     * Connect to the java_test database and select all employees. Print them to the console.
+     */
+    public static void selectAllEmployees(){
+        try(    //Try with resources - automatically closes the connection
+                Connection conn = DriverManager.getConnection(DBProperties.JAVA_TEST_DB_URL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(QUERY);
         ) {
             // Extract data from result set
             while (rs.next()) {
